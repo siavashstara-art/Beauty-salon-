@@ -1,0 +1,6 @@
+{
+  "name": "Tavana Beauty Studio",
+  "description": "Professional beauty salon assistant: facial analysis, hairstyle & makeup recommendation, customer management, and client recovery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

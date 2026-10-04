@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Tavana Beauty</string>
+    <string name="salon_full_title">استودیو زیبایی توانا</string>
+    <string name="salon_tagline">مدیریت هوشمند مشاوره و مشتریان سالن زیبایی</string>
+    <string name="new_consultation">مشاوره زیبایی جدید</string>
+    <string name="take_photo">گرفتن عکس مشتری</string>
+    <string name="pick_gallery">انتخاب عکس از گالری</string>
+    <string name="customers">مشتریان</string>
+    <string name="hairstyles">مدل‌های مو</string>
+    <string name="makeup">سبک‌های آرایش</string>
+    <string name="customer_recovery">مشتری‌برگردان</string>
+    <string name="settings">تنظیمات سالن</string>
+    <string name="camera_permission_required">دسترسی به دوربین برای عکاسی از مشتریان سالن الزامی است</string>
+    <string name="grant_permission">اعطای مجوز دوربین</string>
+</resources>
