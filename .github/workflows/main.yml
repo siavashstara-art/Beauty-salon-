@@ -26,8 +26,15 @@ jobs:
           java-version: '17'
           cache: gradle
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Accept Android SDK licenses
+        run: |
+          yes | sdkmanager --licenses > /dev/null || true
+
+      - name: Install required Android SDK
+        run: |
+          sdkmanager "platform-tools"
+          sdkmanager "platforms;android-36"
+          sdkmanager "build-tools;36.0.0"
 
       - name: Make Gradle executable
         run: chmod +x ./gradlew
@@ -44,13 +51,16 @@ jobs:
       - name: Build Release AAB
         run: ./gradlew bundleRelease --stacktrace
 
-      - name: Find generated artifacts
+      - name: Show generated APK files
         if: always()
         run: |
-          echo "===== APK ====="
+          echo "===== APK FILES ====="
           find . -type f -name "*.apk" -print || true
 
-          echo "===== AAB ====="
+      - name: Show generated AAB files
+        if: always()
+        run: |
+          echo "===== AAB FILES ====="
           find . -type f -name "*.aab" -print || true
 
       - name: Upload Debug APK
@@ -58,8 +68,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: BeautyStudio-Debug-APK
-          path: |
-            **/build/outputs/apk/debug/*.apk
+          path: "**/build/outputs/apk/debug/*.apk"
           if-no-files-found: error
 
       - name: Upload Release APK
@@ -67,8 +76,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: BeautyStudio-Release-APK
-          path: |
-            **/build/outputs/apk/release/*.apk
+          path: "**/build/outputs/apk/release/*.apk"
           if-no-files-found: error
 
       - name: Upload Release AAB
@@ -76,6 +84,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: BeautyStudio-Release-AAB
-          path: |
-            **/build/outputs/bundle/release/*.aab
+          path: "**/build/outputs/bundle/release/*.aab"
           if-no-files-found: error
